@@ -17,6 +17,10 @@
 #pragma once
 
 #include <aidl/android/hardware/vibrator/BnVibrator.h>
+#include <android-base/logging.h>
+#include <log/log.h>
+#include <thread>
+#include <sys/fcntl.h>
 
 namespace aidl {
 namespace android {

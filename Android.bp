@@ -1,19 +1,14 @@
-package {
-    // See: http://go/android-license-faq
-    // A large-scale-change added 'default_applicable_licenses' to import
-    // all of the 'license_kinds' from "hardware_interfaces_license"
-    // to get the below license kinds:
-    //   SPDX-license-identifier-Apache-2.0
-    default_applicable_licenses: ["hardware_interfaces_license"],
-}
-
 cc_library_static {
-    name: "libvibratorexampleimpl",
+    name: "libvibratormediatekimpl",
     vendor: true,
     shared_libs: [
         "libbase",
+        "libutils",
+        "liblog",
         "libbinder_ndk",
         "android.hardware.vibrator-V2-ndk_platform",
+        "libhardware",
+        "libhardware_legacy",
     ],
     export_include_dirs: ["include"],
     srcs: [
@@ -27,18 +22,22 @@ cc_library_static {
 }
 
 cc_binary {
-    name: "android.hardware.vibrator-service.example",
+    name: "android.hardware.vibrator-service.mediatek",
     relative_install_path: "hw",
-    init_rc: ["vibrator-default.rc"],
-    vintf_fragments: ["vibrator-default.xml"],
+    init_rc: ["vibrator-mtk-default.rc"],
+    vintf_fragments: ["vibrator-mtk-default.xml"],
     vendor: true,
     shared_libs: [
         "libbase",
+        "libutils",
+        "liblog",
         "libbinder_ndk",
         "android.hardware.vibrator-V2-ndk_platform",
+        "libhardware",
+        "libhardware_legacy",
     ],
     static_libs: [
-        "libvibratorexampleimpl",
+        "libvibratormediatekimpl",
     ],
     srcs: ["main.cpp"],
 }
